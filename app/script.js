@@ -25,6 +25,10 @@ $(function() {
 
     var adjective = $("input[name=adjective]").val();
     var adjPost;
+    var noun = $("input[name=noun]").val();
+    var nounPost;
+    var verb = $("input[name=verb]").val();
+    var verbPost;
 
     if (adjective) {
       adjPost = {word: adjective};
@@ -34,6 +38,21 @@ $(function() {
       });
     }
 
+    if (noun) {
+      nounPost = {word: noun};
+      $.post("noun", nounPost, function(response) {
+          var nounRes = response.msg;
+          $("#nounRes").text(nounRes);
+    });
+   }
+
+    if (verb) {
+      verbPost = {word: verb};
+      $.post("verb", verbPost, function(response) {
+          var verbRes = response.msg;
+          $("#verbRes").text(verbRes);
+    });
+   }
   });
 
 });
